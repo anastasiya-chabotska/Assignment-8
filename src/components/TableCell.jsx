@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 
-const TableCell = () => {
-  return <td></td>;
+
+
+const TableCell = (props) => {
+  console.log(props)
+  const changeColor = () => {
+  }
+  return <td Click={changeColor} className= {"cube "} ></td>
 };
 
 export default TableCell;
