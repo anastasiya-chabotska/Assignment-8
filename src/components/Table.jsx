@@ -12,6 +12,8 @@ class Table extends Component{
         }
         this.addrow = this.addrow.bind(this);
         this.addcol = this.addcol.bind(this);
+        this.removeRow = this.removeRow.bind(this);
+        this.removeCol = this.removeCol.bind(this);
     }
     
     addrow(){
@@ -24,6 +26,16 @@ class Table extends Component{
             cols: this.state.cols + 1
         })
     }
+    removeRow(){
+        this.setState({
+            rows: this.state.rows -1
+        })
+    }
+    removeCol(){
+        this.setState({
+            cols: this.state.cols - 1
+        })
+    }
 
     render(){ 
         let tableRows = [];
@@ -33,7 +45,9 @@ class Table extends Component{
         }
         return<div>
             <NavBar addrow= {this.addrow}
-                    addcol= {this.addcol}/>
+                    addcol= {this.addcol}
+                    removeRow= {this.removeRow}
+                    removeCol= {this.removeCol}/>
             <table>
                 <tbody>
                     {tableRows}
