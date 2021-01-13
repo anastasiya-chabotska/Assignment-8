@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import { Component } from "react"
 
-const TableCell = () => {
-  return <td></td>;
-};
+
+class TableCell extends Component{
+    render(){
+        return <td className="cell">Cell</td>;
+    }
+}
 
 export default TableCell;
