@@ -8,7 +8,6 @@ class TableRow extends Component{
         for(let i = 0; i <= this.props.colsNum; i++){
             tableCols.push(<TableCell key = {i.toString()+"c"}/>);
         }
-        console.log(this.props.colsNum);
         return <tr>{tableCols}</tr>;
     }
 }
