@@ -5,7 +5,7 @@ import React from 'react';
 
 class App extends React.Component {
 
-  state = { currentColumn: 1, currentRow: 1, color: 'cube' ,isClicked:'false'};
+  state = { currentColumn: 1, currentRow: 1, color: 'cube'};
   addColumn = () => {
     this.setState({ currentColumn: this.state.currentColumn += 1 })
   }
@@ -21,13 +21,13 @@ class App extends React.Component {
         <button type="button" onClick={this.addRow}>Add Row</button>
         <button type="button" onClick={this.addColumn}>Add Column</button>
         <select onChange={this.setColor}>
-          <option value ="cube">Cube</option>
+          <option value="cube">Cube</option>
           <option value="red">Red</option>
           <option value="blue">Blue</option>
           <option value="green">Green</option>
         </select>
 
-        <Table column={this.state.currentColumn} row={this.state.currentRow} color = {this.state.color} />
+        <Table column={this.state.currentColumn} row={this.state.currentRow} color={this.state.color} />
       </div>
     );
   }
