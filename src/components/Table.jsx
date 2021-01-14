@@ -9,13 +9,14 @@ class Table extends Component{
         this.state = {
             rows: 0,
             cols: 0,
-            color: ""
+            color: '#FFFFFF'
         }
         this.addrow = this.addrow.bind(this);
         this.addcol = this.addcol.bind(this);
         this.removeRow = this.removeRow.bind(this);
         this.removeCol = this.removeCol.bind(this);
         this.setColor = this.setColor.bind(this);
+        this.changeColor = this.changeColor.bind(this);
     }
     
     addrow(){
@@ -40,7 +41,7 @@ class Table extends Component{
         }
     }
     removeCol(){
-        if(this.state.cols >= 0){
+        if(this.state.cols > 0){
             this.setState({
                 cols: this.state.cols - 1
             })
@@ -55,12 +56,18 @@ class Table extends Component{
             color: event.target.value
         })
     }
+    changeColor(event){
+        console.log(event);
+        event.target.style.backgroundColor = this.state.color;
+    }
 
     render(){ 
         let tableRows = [];
         for(let i = 0; i <= this.state.rows; i++){
             tableRows.push(<TableRow key={i.toString()+"r"} 
-                colsNum={this.state.cols}/>)
+                colsNum={this.state.cols}
+                changeColor={this.changeColor}
+                />)
         }
         return<div>
             <NavBar addrow= {this.addrow}
