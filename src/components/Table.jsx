@@ -76,6 +76,7 @@ class Table extends Component{
                     removeCol= {this.removeCol}
                     setColor = {this.setColor}
                  />
+                 <br></br>
             <table>
                 <tbody>
                     {tableRows}
