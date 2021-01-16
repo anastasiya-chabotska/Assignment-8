@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import TableRow from './TableRow';
-import TableCell from './TableCell';
 import NavBar from './Navbar';
 
 class Table extends Component{
@@ -17,6 +16,7 @@ class Table extends Component{
         this.removeCol = this.removeCol.bind(this);
         this.setColor = this.setColor.bind(this);
         this.changeColor = this.changeColor.bind(this);
+        this.clearAll = this.clearAll.bind(this);
     }
     
     addrow(){
@@ -61,6 +61,12 @@ class Table extends Component{
         event.target.style.backgroundColor = this.state.color;
     }
 
+    clearAll(){
+        document.querySelectorAll("td").forEach( e => {  
+            e.style.backgroundColor = "#FFFFFF";
+        })
+    }
+
     render(){ 
         let tableRows = [];
         for(let i = 0; i <= this.state.rows; i++){
@@ -75,6 +81,7 @@ class Table extends Component{
                     removeRow= {this.removeRow}
                     removeCol= {this.removeCol}
                     setColor = {this.setColor}
+                    clearAll = {this.clearAll}
                  />
                  <br></br>
             <table>
