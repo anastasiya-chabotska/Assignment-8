@@ -8,7 +8,8 @@ class Table extends Component{
         this.state = {
             rows: 0,
             cols: 0,
-            color: '#FFFFFF'
+            color: '#FFFFFF',
+            coloring: false
         }
         this.addrow = this.addrow.bind(this);
         this.addcol = this.addcol.bind(this);
@@ -19,6 +20,9 @@ class Table extends Component{
         this.clearAll = this.clearAll.bind(this);
         this.fillAll = this.fillAll.bind(this);
         this.fillUncolored = this.fillUncolored.bind(this);
+        this.mouseDown = this.mouseDown.bind(this);
+        this.mouseUp = this.mouseUp.bind(this);
+        this.mouseEnter = this.mouseEnter.bind(this);
     }
     
     addrow(){
@@ -79,6 +83,21 @@ class Table extends Component{
             }
         })
     }
+    mouseDown(){
+        this.setState({
+            coloring: true
+        })
+    }
+    mouseUp(){
+        this.setState({
+            coloring: false
+        })
+    }
+    mouseEnter(event){
+        if(this.state.coloring){
+            event.target.style.backgroundColor = this.state.color;
+        }
+    }
 
     render(){ 
         let tableRows = [];
@@ -86,6 +105,9 @@ class Table extends Component{
             tableRows.push(<TableRow key={i.toString()+"r"} 
                 colsNum={this.state.cols}
                 changeColor={this.changeColor}
+                mouseDown={this.mouseDown}
+                mouseUp={this.mouseUp}
+                mouseEnter={this.mouseEnter}
                 />)
         }
         return<div className="container">
