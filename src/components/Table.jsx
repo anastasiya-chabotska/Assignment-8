@@ -17,6 +17,8 @@ class Table extends Component{
         this.setColor = this.setColor.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.clearAll = this.clearAll.bind(this);
+        this.fillAll = this.fillAll.bind(this);
+        this.fillUncolored = this.fillUncolored.bind(this);
     }
     
     addrow(){
@@ -57,13 +59,24 @@ class Table extends Component{
         })
     }
     changeColor(event){
-        console.log(event);
         event.target.style.backgroundColor = this.state.color;
     }
 
     clearAll(){
         document.querySelectorAll("td").forEach( e => {  
-            e.style.backgroundColor = "#FFFFFF";
+            e.style.backgroundColor = '';
+        })
+    }
+    fillAll(){
+        document.querySelectorAll("td").forEach(e => {
+            e.style.backgroundColor = this.state.color;
+        })
+    }
+    fillUncolored(){
+        document.querySelectorAll("td").forEach(e => {
+            if(e.style.backgroundColor === ''){
+                e.style.backgroundColor = this.state.color;
+            }
         })
     }
 
@@ -75,13 +88,15 @@ class Table extends Component{
                 changeColor={this.changeColor}
                 />)
         }
-        return<div>
+        return<div className="container">
             <NavBar addrow= {this.addrow}
                     addcol= {this.addcol}
                     removeRow= {this.removeRow}
                     removeCol= {this.removeCol}
                     setColor = {this.setColor}
                     clearAll = {this.clearAll}
+                    fillAll = {this.fillAll}
+                    fillUncolored = {this.fillUncolored}
                  />
                  <br></br>
             <table>
